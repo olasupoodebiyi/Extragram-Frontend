@@ -2,6 +2,7 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import styled from "styled-components";
+import Helmet from "rl-react-helmet";
 
 import Loader from "../Loader";
 import Post from "../Post";
@@ -40,7 +41,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   min-height: 70vh;
 `;
 
@@ -49,6 +50,9 @@ export default () => {
   console.log(data, loading);
   return (
     <Wrapper>
+      <Helmet>
+        <title>Feed | Extragram</title>
+      </Helmet>
       {loading && <Loader />}
       {!loading &&
         data &&
@@ -57,6 +61,8 @@ export default () => {
           <Post
             key={post.id}
             id={post.id}
+            caption={post.caption}
+            location={post.location}
             user={post.user}
             files={post.files}
             likeCount={post.likeCount}

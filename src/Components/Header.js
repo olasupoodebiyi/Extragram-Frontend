@@ -18,6 +18,7 @@ const Header = styled.header`
   align-items: center;
   padding: 25px 0px;
   background-color: white;
+  z-index: 10;
 `;
 
 const HeaderWrapper = styled.div`
@@ -86,7 +87,11 @@ export default withRouter(({ history }) => {
         </HeaderColumn>
         <HeaderColumn>
           <form onSubmit={onSearchSubmit}>
-            <SearchInput {...search} placeholder="Search" />
+            <SearchInput
+              value={search.value}
+              onChange={search.onChange}
+              placeholder="Search"
+            />
           </form>
         </HeaderColumn>
         <HeaderColumn>

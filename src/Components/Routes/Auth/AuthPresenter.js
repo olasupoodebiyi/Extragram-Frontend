@@ -1,4 +1,6 @@
 import React from "react";
+import Helmet from "rl-react-helmet";
+
 import styled from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -60,27 +62,69 @@ export default ({
   <Wrapper>
     <Form>
       {action === "logIn" && (
-        <form onSubmit={onSubmit}>
-          <Input placeholder={"Email"} {...email} type="email" />
+        <>
+          <Helmet>
+            <title>Log In | Extragram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input
+              placeholder={"Email"}
+              value={email.value}
+              onChange={email.onChange}
+              type="email"
+            />
 
-          <Button text={"Log in"} />
-        </form>
+            <Button text={"Log in"} />
+          </form>
+        </>
       )}{" "}
       {action === "signUp" && (
-        <form onSubmit={onSubmit}>
-          <Input placeholder={"First Name"} {...firstName} />
-          <Input placeholder={"Last Name"} {...lastName} />
-          <Input placeholder={"Email"} {...email} type="email" />
-          <Input placeholder={"Username"} {...username} />
-          <Button text={"Sign Up"} />
-        </form>
+        <>
+          <Helmet>
+            <title>Sign Up | Extragram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input
+              placeholder={"First Name"}
+              value={firstName.value}
+              onChange={firstName.onChange}
+            />
+            <Input
+              placeholder={"Last Name"}
+              value={lastName.value}
+              onChange={lastName.onChange}
+            />
+            <Input
+              placeholder={"Email"}
+              value={email.value}
+              onChange={email.onChange}
+              type="email"
+            />
+            <Input
+              placeholder={"Username"}
+              value={username.value}
+              onChange={username.onChange}
+            />
+            <Button text={"Sign Up"} />
+          </form>
+        </>
       )}
       {action === "confirm" && (
-        <form onSubmit={onSubmit}>
-          <Input placeholder="Paste your secret" required {...secret} />
+        <>
+          <Helmet>
+            <title>Confirm Secret | Extragram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input
+              placeholder="Paste your secret"
+              required
+              value={secret.value}
+              onChange={secret.onChange}
+            />
 
-          <Button text={"Confirm"} />
-        </form>
+            <Button text={"Confirm"} />
+          </form>
+        </>
       )}
     </Form>
     {action !== "confirm" && (
